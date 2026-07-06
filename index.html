@@ -2,65 +2,96 @@
 <meta name='viewport' content='width=device-width,initial-scale=1'>
 <title>株価トレンドラボ｜今日の1枚</title>
 <style>
-*{box-sizing:border-box} body{font-family:'Hiragino Sans','Yu Gothic',sans-serif;margin:0;
-color:#1a1a1a;background:#fafafa} .wrap{max-width:960px;margin:0 auto;padding:20px 16px 60px}
-header{background:#111;color:#fff;padding:26px 16px}
-header .in{max-width:960px;margin:0 auto}
-h1{font-size:22px;margin:0 0 6px} .lede{font-size:14px;color:#ccc;line-height:1.7;margin:0}
-.lede b{color:#ffd43b}
-h2{font-size:17px;margin:34px 0 4px;border-left:4px solid #111;padding-left:9px}
-.sub{font-size:12px;color:#666;margin:0 0 10px;line-height:1.7}
-table{border-collapse:collapse;width:100%;font-size:13px;background:#fff;
-box-shadow:0 1px 3px rgba(0,0,0,.08);border-radius:8px;overflow:hidden}
-th,td{border-bottom:1px solid #eee;padding:7px 9px;text-align:left}
-th{background:#f1f3f5;font-weight:600;font-size:12px}
+*{box-sizing:border-box} body{font-family:Meiryo,"Hiragino Sans","Noto Sans JP",sans-serif;margin:0;
+color:#222222;background:#ffffff;font-size:16px;line-height:1.85}
+.wrap{max-width:1020px;margin:0 auto;padding:26px 18px 64px}
+header{background:#1B3A6B;padding:34px 18px 30px}
+header .in{max-width:1020px;margin:0 auto}
+h1{font-size:30px;margin:0 0 6px;color:#ffffff;font-weight:700}
+.tagline{font-size:18px;color:#ffffff;line-height:1.9;margin:0 0 20px;font-weight:600}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:880px;margin:0 0 16px}
+@media(max-width:760px){.stats{grid-template-columns:1fr}}
+.stat{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.35);border-radius:10px;padding:16px 18px 13px}
+.stat .n{font-size:25px;font-weight:700;color:#FFC24B;line-height:1.3;margin:0 0 6px}
+.stat .c{font-size:13.5px;color:#ffffff;line-height:1.7;margin:0}
+.honest{font-size:14.5px;color:#dbe4f0;margin:0}
+h2{font-size:22px;margin:48px 0 10px;color:#1B3A6B;font-weight:700;
+border-bottom:3px solid #1B3A6B;padding-bottom:6px;display:inline-block}
+.sub{font-size:15px;color:#444444;margin:8px 0 14px;line-height:2.0}
+.sub a{color:#1B3A6B;font-weight:700;text-decoration:underline}
+table{border-collapse:collapse;width:100%;font-size:15px;background:#fff;border:1px solid #d9dee6}
+th,td{border-bottom:1px solid #e9ecf1;padding:11px 10px;text-align:left}
+th{background:#1B3A6B;font-weight:700;font-size:14px;color:#ffffff}
+td b{font-size:15.5px}
 tr:last-child td{border-bottom:none}
-.hot{color:#c92a2a;font-weight:600} .cold{color:#1864ab;font-weight:600}
-.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:9px;background:#eee;color:#444}
-.tag.q{background:#e7f5ff;color:#1864ab} .tag.a{background:#fff3bf;color:#795c00}
-.hit{background:#fff0f0} .hit td:first-child{border-left:4px solid #e03131}
-.big{font-size:15px;font-weight:700}
-.foot{font-size:11px;color:#888;margin-top:40px;line-height:1.9;border-top:1px solid #ddd;padding-top:14px}
-.pill{display:inline-block;background:#111;color:#fff;font-size:11px;padding:2px 10px;border-radius:12px;margin-right:6px}
+.hot{color:#C0392B;font-weight:700} .cold{color:#1B3A6B;font-weight:700}
+.tag{display:inline-block;font-size:13px;padding:2px 9px;border-radius:4px;background:#EDF1F7;color:#1B3A6B}
+.tag.q{background:#EDF1F7;color:#1B3A6B} .tag.a{background:#FFF3DC;color:#8a5a00}
+.btn{display:inline-block;background:#1B3A6B;color:#fff;font-size:14px;font-weight:700;
+padding:6px 18px;border-radius:6px;text-decoration:none;white-space:nowrap}
+.btn:hover{background:#142C52}
+.hit{background:#FFF3DC} .hit td:first-child{border-left:4px solid #FFC24B}
+.big{font-size:20px;font-weight:700;color:#1B3A6B}
+.foot{font-size:13px;color:#666666;margin-top:52px;line-height:2.0;border-top:1px solid #d9dee6;padding-top:16px}
+.pill{display:inline-block;background:#EDF1F7;color:#1B3A6B;font-size:13px;padding:3px 12px;border-radius:4px;margin-right:6px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:16px 0 10px}
+@media(max-width:760px){.steps{grid-template-columns:1fr}}
+.step{border:1px solid #d9dee6;border-radius:10px;padding:18px 18px 14px;background:#fff}
+.step .sn{display:flex;align-items:center;gap:10px;margin:0 0 10px}
+.step .sn i{flex-shrink:0;width:34px;height:34px;border-radius:50%;background:#1B3A6B;color:#fff;
+font-style:normal;font-size:17px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.step .sn b{font-size:17px;color:#1B3A6B}
+.step p{font-size:14.5px;color:#333;line-height:1.9;margin:0}
 </style>
 <header><div class='in'>
 <h1>株価トレンドラボ</h1>
-<p class='lede'>「<b>近いうちに大きく動きそうな株</b>」を、公開データだけで毎日20銘柄選びます。過去2年半の全日程で答え合わせした結果 — <b>2銘柄に1銘柄が、2週間以内に市場平均より±10%以上動きました</b>（同じ状態の銘柄を無作為に選んだ場合の約2.8倍）。±25%級の大変動でも6銘柄に1銘柄（約5倍）。上がるか下がるかは言いません（検証したら当てられなかったので、当てられないと言います）。外れも含めた成績は、このページの下で毎日公開しています。</p>
+<p class='tagline'>「近いうちに大きく動きそうな株」を、公開データだけで毎日20銘柄。</p>
+<div class='stats'>
+<div class='stat'><p class='n'>2銘柄に1銘柄</p><p class='c'>が2週間以内に±10%以上動いた<br>（過去2年半の全日程で答え合わせ）</p></div>
+<div class='stat'><p class='n'>約2.8倍</p><p class='c'>ふつうに選んだ場合（19%）との差<br>±25%級の大変動なら約5倍</p></div>
+<div class='stat'><p class='n'>外れも全部公開</p><p class='c'>成績表を毎日自動更新<br>検証済みの数字しか載せません</p></div>
+</div>
+<p class='honest'>上がるか下がるかは言いません — 検証したら当てられなかったので、当てられないと言います。</p>
 </div></header><div class='wrap'>
 <h2>このページの使い方（数日〜数週間の売買をする方向け）</h2>
-<p class='sub'>①ここは「買い推奨リスト」ではなく「<b>近く波が来やすい場所の監視リスト</b>」です。動く方向は上も下もあります。②一般的な使い方は、ここから銘柄を絞って証券アプリの監視リストに入れ、高値超え/安値割れのアラートを置いて<b>動き出すまで待つ</b>こと。すぐ買うことではありません。③リストの根拠は「2週間(10営業日)以内」なので、動かなければ外す期限も明確です。④毎日更新。検証済みの数字以外は載せていません。</p>
+<div class='steps'>
+<div class='step'><div class='sn'><i>1</i><b>これは監視リストです</b></div><p>買い推奨ではありません。「近く大きく動きやすい場所」を毎日20銘柄選んで示すだけで、動く方向は<b>上も下も</b>あります。</p></div>
+<div class='step'><div class='sn'><i>2</i><b>絞って、待つ</b></div><p>気になる銘柄を証券アプリの監視リストに入れ、高値超え・安値割れのアラートを置いて<b>動き出すまで待つ</b>のが一般的な使い方です。すぐ買うことではありません。</p></div>
+<div class='step'><div class='sn'><i>3</i><b>期限は2週間</b></div><p>このリストの根拠は「2週間(10営業日)以内に動きやすい」という過去実測です。動かなければ外す。リストは毎日更新されます。</p></div>
+</div>
+<p class='sub'>掲載しているのは検証済みの数字だけです（検証方法と成績はページ下部）。</p>
 <h2>今日の注目20銘柄</h2>
-<p class='sub'>基準日 2026-07-05。選び方: 株価の勢いの強さ × きっかけの種類 × 特許・商標の動き（<b>特許や商標の出願が静かな会社ほど株価は荒れやすい</b> — 当ラボが特許庁の全データで確かめた独自の法則）。同じ種類は5銘柄まで。<b>売買代金</b>=直近20日平均の商いの厚さ（1億円未満は薄商い注意）。<b>高値/安値まで</b>=直近20日の高値・安値までの距離（アラートを置く目安。0%に近いほど節目が近い）。</p>
-<table><tr><th>#</th><th>コード</th><th>会社</th><th>きっかけ</th><th>いまの状態</th><th>特許・商標</th><th>売買代金/日</th><th>高値まで</th><th>安値まで</th><th>次回決算</th><th>空売り</th></tr>
-<tr><td>1</td><td><b>6101</b></td><td>ツガミ</td><td><span class='tag'>設備投資・機械</span></td><td class='hot'>半年で株価2.8倍に急騰中</td><td><span class='tag q'>静か＝荒れやすい</span></td><td>34.8億円</td><td>+6.3%</td><td>-27.1%</td><td>7/30</td><td><b>可</b></td></tr>
-<tr><td>2</td><td><b>6166</b></td><td>中村超硬</td><td><span class='tag'>設備投資・機械</span></td><td class='hot'>半年で株価3.5倍に急騰中</td><td><span class='tag q'>静か＝荒れやすい</span></td><td>5.0億円</td><td>+2.0%</td><td>-47.7%</td><td>8/10</td><td>不可</td></tr>
-<tr><td>3</td><td><b>6227</b></td><td>ＡＩメカテック</td><td><span class='tag'>設備投資・機械</span></td><td class='hot'>半年で株価4.2倍に急騰中</td><td><span class='tag q'>静か＝荒れやすい</span></td><td>120.6億円</td><td>+32.4%</td><td>-9.8%</td><td>8/7</td><td><b>可</b></td></tr>
-<tr><td>4</td><td><b>6264</b></td><td>マルマエ</td><td><span class='tag'>設備投資・機械</span></td><td class='hot'>半年で株価2.6倍に急騰中</td><td><span class='tag q'>静か＝荒れやすい</span></td><td>32.3億円</td><td>+8.7%</td><td>-37.5%</td><td>―</td><td><b>可</b></td></tr>
-<tr><td>5</td><td><b>6266</b></td><td>タツモ</td><td><span class='tag'>設備投資・機械</span></td><td class='hot'>半年で株価2.3倍に急騰中</td><td><span class='tag q'>静か＝荒れやすい</span></td><td>12.6億円</td><td>+5.7%</td><td>-33.3%</td><td>8/10</td><td><b>可</b></td></tr>
-<tr><td>6</td><td><b>6407</b></td><td>CKD株式会社</td><td><span class='tag'>M&amp;A・事業転換</span></td><td class='hot'>半年で株価2.3倍に急騰中</td><td><span class='tag q'>静か＝荒れやすい</span></td><td>59.4億円</td><td>+11.2%</td><td>-24.2%</td><td>8/10</td><td><b>可</b></td></tr>
-<tr><td>7</td><td><b>3480</b></td><td>ジェイ・エス・ビー</td><td><span class='tag'>買収の思惑</span></td><td class='hot'>半年で株価2.6倍に急騰中</td><td><span class='tag q'>静か＝荒れやすい</span></td><td>22.6億円</td><td>+0.2%</td><td>-25.9%</td><td>―</td><td><b>可</b></td></tr>
-<tr><td>8</td><td><b>6996</b></td><td>ニチコン株式会社</td><td><span class='tag'>テーマ株(AI・宇宙・防衛など)</span></td><td class='hot'>半年で株価2.7倍に急騰中</td><td><span class='tag a'>動きあり</span></td><td>64.9億円</td><td>+12.0%</td><td>-15.6%</td><td>8/5</td><td><b>可</b></td></tr>
-<tr><td>9</td><td><b>6232</b></td><td>株式会社ＡＣＳＬ</td><td><span class='tag'>テーマ株(AI・宇宙・防衛など)</span></td><td class='hot'>半年で+94%上昇・過熱ぎみ</td><td><span class='tag q'>静か＝荒れやすい</span></td><td>13.0億円</td><td>+15.1%</td><td>-11.6%</td><td>8/14</td><td><b>可</b></td></tr>
-<tr><td>10</td><td><b>4556</b></td><td>カイノス</td><td><span class='tag'>バイオの思惑</span></td><td class='hot'>半年で+76%上昇・過熱ぎみ</td><td><span class='tag q'>静か＝荒れやすい</span></td><td><span class='cold'>0.0億(薄)</span></td><td>+0.4%</td><td>-0.2%</td><td>―</td><td>―</td></tr>
-<tr><td>11</td><td><b>4588</b></td><td>オンコリスバイオファーマ</td><td><span class='tag'>バイオの思惑</span></td><td class='hot'>半年で+97%上昇・過熱ぎみ</td><td><span class='tag q'>静か＝荒れやすい</span></td><td>31.7億円</td><td>+15.3%</td><td>-11.9%</td><td>8/7</td><td>不可</td></tr>
-<tr><td>12</td><td><b>4596</b></td><td>窪田製薬ホールディングス</td><td><span class='tag'>バイオの思惑</span></td><td class='hot'>半年で+98%上昇・過熱ぎみ</td><td><span class='tag q'>静か＝荒れやすい</span></td><td><span class='cold'>0.6億(薄)</span></td><td>+0.0%</td><td>-40.2%</td><td>―</td><td>不可</td></tr>
-<tr><td>13</td><td><b>255A</b></td><td>ジーエルテクノホールディ</td><td><span class='tag'>半導体サイクル</span></td><td class='hot'>半年で株価2.1倍に急騰中</td><td><span class='tag q'>静か＝荒れやすい</span></td><td>6.6億円</td><td>+7.1%</td><td>-20.8%</td><td>8/7</td><td><b>可</b></td></tr>
-<tr><td>14</td><td><b>485A</b></td><td>パワーエックス</td><td><span class='tag'>半導体サイクル</span></td><td class='hot'>半年で株価2.3倍に急騰中</td><td><span class='tag q'>静か＝荒れやすい</span></td><td>143.2億円</td><td>+45.9%</td><td>-15.7%</td><td>8/13</td><td>不可</td></tr>
-<tr><td>15</td><td><b>6521</b></td><td>オキサイド</td><td><span class='tag'>半導体サイクル</span></td><td class='hot'>半年で株価2.9倍に急騰中</td><td><span class='tag q'>静か＝荒れやすい</span></td><td>16.2億円</td><td>+16.9%</td><td>-8.3%</td><td><span class='cold'><b>7/14⚠</b></span></td><td>不可</td></tr>
-<tr><td>16</td><td><b>6522</b></td><td>アスタリスク</td><td><span class='tag'>半導体サイクル</span></td><td class='hot'>半年で株価5.1倍に急騰中</td><td><span class='tag q'>静か＝荒れやすい</span></td><td>30.0億円</td><td>+16.3%</td><td>-65.0%</td><td><span class='cold'><b>7/15⚠</b></span></td><td><b>可</b></td></tr>
-<tr><td>17</td><td><b>6597</b></td><td>ＨＰＣシステムズ</td><td><span class='tag'>半導体サイクル</span></td><td class='hot'>半年で株価2.4倍に急騰中</td><td><span class='tag q'>静か＝荒れやすい</span></td><td>11.8億円</td><td>+47.7%</td><td>-4.7%</td><td>8/14</td><td>不可</td></tr>
-<tr><td>18</td><td><b>3656</b></td><td>株式会社KLab</td><td><span class='tag'>テーマ株(AI・宇宙・防衛など)</span></td><td class='cold'>半年で-44%・売られすぎ圏</td><td><span class='tag q'>静か＝荒れやすい</span></td><td>9.6億円</td><td>+37.9%</td><td>-3.1%</td><td>―</td><td><b>可</b></td></tr>
-<tr><td>19</td><td><b>3905</b></td><td>データセクション株式会社</td><td><span class='tag'>テーマ株(AI・宇宙・防衛など)</span></td><td class='hot'>半年で+47%上昇・過熱ぎみ</td><td><span class='tag q'>静か＝荒れやすい</span></td><td>108.2億円</td><td>+88.3%</td><td>-6.9%</td><td>8/14</td><td><b>可</b></td></tr>
-<tr><td>20</td><td><b>4552</b></td><td>ＪＣＲファーマ</td><td><span class='tag'>バイオの思惑</span></td><td class='cold'>半年で-35%・売られすぎ圏</td><td><span class='tag q'>静か＝荒れやすい</span></td><td>2.9億円</td><td>+5.3%</td><td>-2.4%</td><td>7/30</td><td><b>可</b></td></tr>
+<p class='sub'>基準日 2026-07-06。過去2年半の答え合わせで「動きやすさ」に効くと確認できた要因だけを組み合わせて選んでいます（選び方の詳細と成績はページ下部の検証コーナー）。同じ種類は5銘柄まで。<b>売買代金</b>=直近20日平均の商いの厚さ（1億円未満は薄商い注意）。<b>高値/安値まで</b>=直近20日の高値・安値までの距離（アラートを置く目安。0%に近いほど節目が近い）。</p>
+<table><tr><th>#</th><th>コード</th><th>会社</th><th>きっかけ</th><th>いまの状態</th><th>売買代金/日</th><th>高値まで</th><th>安値まで</th><th>次回決算</th><th>空売り</th><th></th></tr>
+<tr><td>1</td><td><b>4596</b></td><td>窪田製薬ホールディングス</td><td><span class='tag'>バイオの思惑</span></td><td class='hot'>半年で株価2.5倍に急騰中</td><td><span class='cold'>0.6億(薄)</span></td><td>+0.0%</td><td>-55.6%</td><td>―</td><td>不可</td><td><a class='btn' href='cards/4596.html'>詳細</a></td></tr>
+<tr><td>2</td><td><b>6101</b></td><td>ツガミ</td><td><span class='tag'>設備投資・機械</span></td><td class='hot'>半年で株価2.8倍に急騰中</td><td>34.3億円</td><td>+6.5%</td><td>-25.2%</td><td>7/30</td><td><b>可</b></td><td><a class='btn' href='cards/6101.html'>詳細</a></td></tr>
+<tr><td>3</td><td><b>6166</b></td><td>中村超硬</td><td><span class='tag'>設備投資・機械</span></td><td class='hot'>半年で株価3.2倍に急騰中</td><td>5.4億円</td><td>+10.1%</td><td>-39.7%</td><td>8/10</td><td>不可</td><td><a class='btn' href='cards/6166.html'>詳細</a></td></tr>
+<tr><td>4</td><td><b>6227</b></td><td>ＡＩメカテック</td><td><span class='tag'>設備投資・機械</span></td><td class='hot'>半年で株価3.6倍に急騰中</td><td>114.6億円</td><td>+43.8%</td><td>-2.0%</td><td>8/7</td><td><b>可</b></td><td><a class='btn' href='cards/6227.html'>詳細</a></td></tr>
+<tr><td>5</td><td><b>6264</b></td><td>マルマエ</td><td><span class='tag'>設備投資・機械</span></td><td class='hot'>半年で株価2.2倍に急騰中</td><td>36.0億円</td><td>+23.6%</td><td>-28.9%</td><td>―</td><td><b>可</b></td><td><a class='btn' href='cards/6264.html'>詳細</a></td></tr>
+<tr><td>6</td><td><b>6266</b></td><td>タツモ</td><td><span class='tag'>設備投資・機械</span></td><td class='hot'>半年で株価2.1倍に急騰中</td><td>12.6億円</td><td>+11.4%</td><td>-29.7%</td><td>8/10</td><td><b>可</b></td><td><a class='btn' href='cards/6266.html'>詳細</a></td></tr>
+<tr><td>7</td><td><b>6407</b></td><td>CKD株式会社</td><td><span class='tag'>M&amp;A・事業転換</span></td><td class='hot'>半年で株価2.2倍に急騰中</td><td>60.4億円</td><td>+11.4%</td><td>-23.0%</td><td>8/10</td><td><b>可</b></td><td><a class='btn' href='cards/6407.html'>詳細</a></td></tr>
+<tr><td>8</td><td><b>3480</b></td><td>ジェイ・エス・ビー</td><td><span class='tag'>買収の思惑</span></td><td class='hot'>半年で株価2.6倍に急騰中</td><td>22.6億円</td><td>+0.2%</td><td>-24.7%</td><td>―</td><td><b>可</b></td><td><a class='btn' href='cards/3480.html'>詳細</a></td></tr>
+<tr><td>9</td><td><b>6996</b></td><td>ニチコン株式会社</td><td><span class='tag'>テーマ株(AI・宇宙・防衛など)</span></td><td class='hot'>半年で株価2.4倍に急騰中</td><td>64.1億円</td><td>+23.8%</td><td>-6.6%</td><td>8/5</td><td><b>可</b></td><td><a class='btn' href='cards/6996.html'>詳細</a></td></tr>
+<tr><td>10</td><td><b>6232</b></td><td>株式会社ＡＣＳＬ</td><td><span class='tag'>テーマ株(AI・宇宙・防衛など)</span></td><td class='hot'>半年で+71%上昇・過熱ぎみ</td><td>12.9億円</td><td>+13.2%</td><td>-13.0%</td><td>8/14</td><td><b>可</b></td><td><a class='btn' href='cards/6232.html'>詳細</a></td></tr>
+<tr><td>11</td><td><b>4556</b></td><td>カイノス</td><td><span class='tag'>バイオの思惑</span></td><td class='hot'>半年で+69%上昇・過熱ぎみ</td><td><span class='cold'>0.0億(薄)</span></td><td>+0.4%</td><td>-0.2%</td><td>―</td><td>―</td><td><a class='btn' href='cards/4556.html'>詳細</a></td></tr>
+<tr><td>12</td><td><b>4588</b></td><td>オンコリスバイオファーマ</td><td><span class='tag'>バイオの思惑</span></td><td class='hot'>半年で+82%上昇・過熱ぎみ</td><td>29.9億円</td><td>+11.0%</td><td>-15.3%</td><td>8/7</td><td>不可</td><td><a class='btn' href='cards/4588.html'>詳細</a></td></tr>
+<tr><td>13</td><td><b>255A</b></td><td>ジーエルテクノホールディ</td><td><span class='tag'>半導体サイクル</span></td><td class='hot'>半年で株価2.1倍に急騰中</td><td>6.1億円</td><td>+7.8%</td><td>-20.3%</td><td>8/7</td><td><b>可</b></td><td><a class='btn' href='cards/255A.html'>詳細</a></td></tr>
+<tr><td>14</td><td><b>485A</b></td><td>パワーエックス</td><td><span class='tag'>半導体サイクル</span></td><td class='hot'>半年で株価2.4倍に急騰中</td><td>143.9億円</td><td>+41.6%</td><td>-16.3%</td><td>8/13</td><td>不可</td><td><a class='btn' href='cards/485A.html'>詳細</a></td></tr>
+<tr><td>15</td><td><b>6521</b></td><td>オキサイド</td><td><span class='tag'>半導体サイクル</span></td><td class='hot'>半年で株価2.8倍に急騰中</td><td>15.6億円</td><td>+20.4%</td><td>-5.5%</td><td><span class='cold'><b>7/14⚠</b></span></td><td>不可</td><td><a class='btn' href='cards/6521.html'>詳細</a></td></tr>
+<tr><td>16</td><td><b>6522</b></td><td>アスタリスク</td><td><span class='tag'>半導体サイクル</span></td><td class='hot'>半年で株価4.3倍に急騰中</td><td>32.4億円</td><td>+33.7%</td><td>-59.7%</td><td><span class='cold'><b>7/15⚠</b></span></td><td><b>可</b></td><td><a class='btn' href='cards/6522.html'>詳細</a></td></tr>
+<tr><td>17</td><td><b>6597</b></td><td>ＨＰＣシステムズ</td><td><span class='tag'>半導体サイクル</span></td><td class='hot'>半年で株価2.1倍に急騰中</td><td>10.2億円</td><td>+45.5%</td><td>-0.6%</td><td>8/14</td><td>不可</td><td><a class='btn' href='cards/6597.html'>詳細</a></td></tr>
+<tr><td>18</td><td><b>3905</b></td><td>データセクション株式会社</td><td><span class='tag'>テーマ株(AI・宇宙・防衛など)</span></td><td class='hot'>半年で+36%上昇・過熱ぎみ</td><td>100.8億円</td><td>+98.4%</td><td>-2.8%</td><td>8/14</td><td><b>可</b></td><td><a class='btn' href='cards/3905.html'>詳細</a></td></tr>
+<tr><td>19</td><td><b>4552</b></td><td>ＪＣＲファーマ</td><td><span class='tag'>バイオの思惑</span></td><td class='cold'>半年で-35%・売られすぎ圏</td><td>2.8億円</td><td>+4.6%</td><td>-3.1%</td><td>7/30</td><td><b>可</b></td><td><a class='btn' href='cards/4552.html'>詳細</a></td></tr>
+<tr><td>20</td><td><b>4570</b></td><td>免疫生物研究所</td><td><span class='tag'>バイオの思惑</span></td><td class='cold'>半年で-46%・売られすぎ圏</td><td>1.1億円</td><td>+5.2%</td><td>-11.0%</td><td>8/7</td><td>不可</td><td><a class='btn' href='cards/4570.html'>詳細</a></td></tr>
 </table>
-<p class='sub'>※ 次回決算の⚠=2週間以内（決算またぎ注意）。―=予定未取得。空売り「可」=貸借銘柄、「不可」=制度信用のみ、―=対象外。いずれもJPX公表データに基づく参考情報。</p>
+<p class='sub'>※ <b>「詳細」ボタンで銘柄カード</b>（材料の並び・株価の状態・同じ型だった過去事例の結末）が開きます。次回決算の⚠=2週間以内（決算またぎ注意）。―=予定未取得。空売り「可」=貸借銘柄、「不可」=制度信用のみ。JPX公表データに基づく参考情報。</p>
 <h2>凪から動く（株価はまだ横ばい・商いだけ急増）</h2>
 <p class='sub'>株価は半年横ばいのままなのに、<b>売買代金だけが平常時の2.5倍超</b>に膨れている銘柄。過去検証では、この状態の銘柄の<b>33%が2週間以内に±10%以上</b>動きました（直近10ヶ月だけの検証でも34%。横ばい銘柄を無作為に選んだ場合は11%）。まだチャートに形が出る前の段階です。方向は上下どちらもあります。</p>
-<table><tr><th>コード</th><th>会社</th><th>きっかけ</th><th>商いの倍率</th><th>半年トレンド</th></tr>
-<tr><td><b>6778</b></td><td>アルチザネットワークス</td><td><span class='tag'>半導体サイクル</span></td><td class='hot'><b>2.6倍</b></td><td>+22%（横ばい圏）</td></tr>
+<table><tr><th>コード</th><th>会社</th><th>きっかけ</th><th>商いの倍率</th><th>半年トレンド</th><th></th></tr>
+<tr><td><b>6778</b></td><td>アルチザネットワークス</td><td><span class='tag'>半導体サイクル</span></td><td class='hot'><b>2.9倍</b></td><td>+21%（横ばい圏）</td><td><a class='btn' href='cards/6778.html'>詳細</a></td></tr>
 </table>
 <h2>今週の「モノ言う株主」の新規買い</h2>
-<p class='sub'>企業に経営改善を迫る投資家（アクティビスト）が、新たに株を5%以上買ったという国の開示（大量保有報告）。過去4年の全件を調べると、この報告が出た株は<b>その後5営業日で平均+2.1%・64%の確率で市場平均に勝って</b>いました（同じ株を適当な日に買った場合との比較でも差を確認済み）。あくまで過去の集計で、次も同じになる保証はありません。</p>
+<p class='sub'>企業に経営改善を迫る投資家（アクティビスト）が、新たに株を5%以上買ったという国の開示（大量保有報告）。過去4年の全件を調べると、この報告が出た株は<b>その後5営業日で平均+2.1%・64%の確率で市場平均に勝って</b>いました（同じ株を適当な日に買った場合との比較でも差を確認済み）。あくまで過去の集計で、次も同じになる保証はありません。<a href='discovery_feed.html'>→ 直近45日の全件リスト</a></p>
 <table><tr><th>提出日</th><th>コード</th><th>会社</th><th>取得者</th></tr>
 <tr><td>2026-07-03</td><td><b>8056</b></td><td>ＢＩＰＲＯＧＹ</td><td>ウエリントン・マネージメント・カンパニー・エルエルピ</td></tr>
 <tr><td>2026-07-03</td><td><b>9024</b></td><td>株式会社西武ホールディングス</td><td>３Ｄ　Ｉｎｖｅｓｔｍｅｎｔ　Ｐａｒｔｎｅｒｓ　Ｐｔｅ</td></tr>
@@ -103,6 +134,11 @@ tr:last-child td{border-bottom:none}
 <p class='sub'>スイングの銘柄探しの定番は、証券サイトの値上がり率ランキングです。同じ期間・同じ銘柄プール・同じ採点で比べました。<b>2週間以内に±10%動く率はランキングの方が高い</b>（65.8% vs 当リスト53.2%）— ただしランキングは<b>昨日すでに爆発して全員が見ている銘柄</b>です。当リストとの銘柄の重なりはわずか<b>5.5%</b>。別の銘柄を出しています。</p>
 <table><tr><th></th><th>値上がり率ランキング</th><th>当リスト</th></tr><tr><td>分かるタイミング</td><td>爆発した後</td><td><b>爆発する前</b></td></tr><tr><td>2週間で±10%動く率</td><td><b>65.8%</b></td><td>53.2%</td></tr><tr><td>動いた後も水準維持</td><td>72%</td><td>71%（互角）</td></tr><tr><td>選出後2週間以内にランキング入り</td><td>―</td><td><b>23.8%（無作為の5.5倍）</b></td></tr><tr><td>根拠と期限の明示</td><td>なし</td><td><b>あり（きっかけ＋10営業日）</b></td></tr></table>
 <p class='sub'>使い分け: ランキングは「動き出した波に乗る」道具、当リストは「波が来る場所で待つ」道具。当リストの約4銘柄に1銘柄は、2週間以内にそのランキング側に現れます。</p>
+<h2>このリストはどう作られているか</h2>
+<p class='sub'>材料はすべて、誰でも入手できる公開データです。非公開情報は一切使っていません。</p>
+<table><tr><th>提供元</th><th>使っているデータ</th><th>取得</th></tr><tr><td>株価データ</td><td>全上場 約3,800社の日々の値動き（約440万日分）</td><td>毎日 18:00</td></tr><tr><td>金融庁 EDINET</td><td>大量保有報告書など 開示書類 7,000件超</td><td>毎朝 6:00</td></tr><tr><td>東証 TDnet</td><td>自社株買い・業績修正などの適時開示</td><td>毎日 18:30</td></tr><tr><td>特許庁（INPIT）</td><td>特許・商標・意匠の公開データ 30年分 約470万件</td><td>毎晩 3:00</td></tr><tr><td>JPX（東証）</td><td>決算発表予定・貸借銘柄・市場区分</td><td>毎週 月曜</td></tr></table>
+<div class='steps'><div class='step'><div class='sn'><i>1</i><b>毎日集める</b></div><p>上の5系統を全自動で取得。人手も裁量も入りません。</p></div><div class='step'><div class='sn'><i>2</i><b>整理する</b></div><p>銘柄ごとに「株価の状態」と「きっかけ（買収の思惑・大株主の動きなど）」を毎日組み立てます。</p></div><div class='step'><div class='sn'><i>3</i><b>検証する</b></div><p>過去2年半の全日程で「その日に知り得た情報だけ」を使ってリストを再現し、2週間後の実際の値動きで採点。<b>効かなかった要因は捨てます</b>（例: 上がる/下がるの方向予測は的中率がコイン投げと同じだったので不採用）。</p></div><div class='step'><div class='sn'><i>4</i><b>公開で答え合わせ</b></div><p>検証を通った要因だけで毎日リストを作り、その後の成績を外れも含めてこのページで公開し続けます。</p></div></div>
+<p class='sub'>使っていないもの: 未来のデータ／非公開情報／SNSの噂／人間の相場観。検証の生データも公開しています（verification_forward_test.txt）。</p>
 <h2>検証: どのくらいの動きが、どのくらいの頻度で起きたか</h2>
 <p class='sub'>過去2年半の全日程で「その日の注目20銘柄」を再現し、2週間以内の値動き（市場平均との差）を採点した表。比較相手は同じ状態の銘柄の無作為選択。都合のいい行だけ見せないために、全部の段を載せています。直近10ヶ月だけで測るとさらに高めでした（±10%で57%）。</p>
 <table><tr><th>動きの規模</th><th>注目20銘柄</th><th>無作為選択</th><th>倍率</th></tr>
@@ -111,5 +147,5 @@ tr:last-child td{border-bottom:none}
 <tr><td>±20%以上</td><td><b>21.9%（5銘柄に1）</b></td><td>4.8%</td><td><b>4.6倍</b></td></tr>
 <tr><td>±25%以上</td><td><b>16.7%（6銘柄に1）</b></td><td>3.3%</td><td><b>5.0倍</b></td></tr>
 </table>
-<p class='foot'><span class='pill'>上がる/下がるは言いません</span><span class='pill'>外れも公開</span><span class='pill'>投資助言ではありません</span><br>「大きく動く」の定義: 2週間(10営業日)以内に、市場平均との差が+40%(大幅上昇)または-25%(大幅下落)に達すること。数字はすべて、過去の各日に「その日に手に入る情報だけ」で同じ選び方を再現して採点したもの（未来のデータは使っていません）。出典: 株価(Yahoo Finance)・EDINET(金融庁)・TDnet(東証)・特許情報標準データ(INPIT)。本ページは公開情報の整理と過去の統計的事実の提示であり、金融商品取引法上の投資助言・投資勧誘ではありません。売買の判断はご自身の責任で行ってください。<br>生成: 2026-07-06 15:19 株価トレンドラボ（毎日自動更新）</p>
+<p class='foot'><span class='pill'>上がる/下がるは言いません</span><span class='pill'>外れも公開</span><span class='pill'>投資助言ではありません</span><br>「大きく動く」の定義: 2週間(10営業日)以内に、市場平均との差が+40%(大幅上昇)または-25%(大幅下落)に達すること。数字はすべて、過去の各日に「その日に手に入る情報だけ」で同じ選び方を再現して採点したもの（未来のデータは使っていません）。出典: 株価(Yahoo Finance)・EDINET(金融庁)・TDnet(東証)・特許情報標準データ(INPIT)。本ページは公開情報の整理と過去の統計的事実の提示であり、金融商品取引法上の投資助言・投資勧誘ではありません。売買の判断はご自身の責任で行ってください。<br>生成: 2026-07-06 23:15 株価トレンドラボ（毎日自動更新）</p>
 </div></html>
